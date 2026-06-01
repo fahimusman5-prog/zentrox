@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mouse-x: 50%;
+  --mouse-y: 30%;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #03070f;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+body::selection {
+  background: rgba(5, 124, 255, 0.35);
+}
+
+@layer components {
+  .eyebrow {
+    @apply mb-4 text-xs font-black uppercase tracking-normal text-zentrox-cyan;
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-zentrox-blue to-zentrox-cyan px-6 text-sm font-black text-white shadow-glow transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_54px_rgba(53,213,255,0.38)];
+  }
+
+  .button-ghost {
+    @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-1 hover:border-zentrox-cyan/40 hover:bg-white/10;
+  }
+
+  .contact-chip {
+    @apply rounded-lg border border-white/10 bg-white/[0.055] px-5 py-4 text-sm font-extrabold text-white/75 shadow-card backdrop-blur-xl transition hover:border-zentrox-blue/40 hover:text-white;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-white/10 bg-white/[0.055] px-4 py-4 text-white outline-none transition placeholder:text-white/40 focus:border-zentrox-blue/60 focus:ring-4 focus:ring-zentrox-blue/20;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: #35d5ff;
+  box-shadow: 0 0 18px rgba(53, 213, 255, 0.92);
+  animation: particle-float 7s ease-in-out infinite;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+  transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-8px);
+}
+
+.showcase-image-stage {
+  position: relative;
+  overflow: hidden;
+  perspective: 1100px;
+}
+
+.showcase-image-card {
+  position: absolute;
+  width: 260px;
+  height: 350px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(5, 124, 255, 0.08));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+  transform-style: preserve-3d;
+  transition: all 0.4s ease;
+  will-change: transform;
+  animation: screenFloat 6s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.showcase-image-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.showcase-card-one {
+  left: 7%;
+  top: 44px;
+  transform: rotateY(28deg) rotateZ(-4deg);
+}
+
+.showcase-card-two {
+  left: 38%;
+  top: 0;
+  transform: rotateY(-12deg);
+  animation-delay: -1s;
+}
+
+.showcase-card-three {
+  right: 8%;
+  top: 64px;
+  transform: rotateY(-34deg) rotateZ(4deg);
+  animation-delay: -2s;
+}
+
+.showcase-image-card:hover,
+.showcase-image-card.is-active {
+  z-index: 4;
+  box-shadow: 0 34px 95px rgba(0, 0, 0, 0.46), 0 0 58px rgba(5, 124, 255, 0.72);
+}
+
+.showcase-card-one:hover,
+.showcase-card-one.is-active {
+  transform: rotateX(var(--rx, 0deg)) rotateY(calc(28deg + var(--ry, 0deg))) rotateZ(-4deg) translateZ(72px) scale(1.08);
+}
+
+.showcase-card-two:hover,
+.showcase-card-two.is-active {
+  transform: rotateX(var(--rx, 0deg)) rotateY(calc(-12deg + var(--ry, 0deg))) translateZ(72px) scale(1.08);
+}
+
+.showcase-card-three:hover,
+.showcase-card-three.is-active {
+  transform: rotateX(var(--rx, 0deg)) rotateY(calc(-34deg + var(--ry, 0deg))) rotateZ(4deg) translateZ(72px) scale(1.08);
+}
+
+.bg-project-1 {
+  background:
+    linear-gradient(135deg, rgba(5, 124, 255, 0.96), rgba(53, 213, 255, 0.5)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 24px);
+}
+
+.bg-project-2 {
+  background:
+    radial-gradient(circle at 72% 28%, rgba(255, 138, 0, 0.5), transparent 24%),
+    linear-gradient(135deg, #081526, #057cff);
+}
+
+.bg-project-3 {
+  background:
+    linear-gradient(135deg, rgba(3, 7, 15, 0.96), rgba(5, 124, 255, 0.72)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 22px);
+}
+
+.bg-project-4 {
+  background:
+    radial-gradient(circle at 24% 30%, rgba(53, 213, 255, 0.42), transparent 26%),
+    linear-gradient(135deg, #06111f, #ff8a00);
+}
+
+.bg-project-5 {
+  background:
+    linear-gradient(135deg, #0b1728, #35d5ff),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 20px);
+}
+
+.bg-project-6 {
+  background:
+    radial-gradient(circle at 76% 25%, rgba(5, 124, 255, 0.58), transparent 22%),
+    linear-gradient(135deg, #02060c, #14253d);
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(18px, -26px, 0) scale(1.6);
+  }
+}
+
+@keyframes screenFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .particle:nth-child(n + 13) {
+    display: none;
+  }
+
+  .showcase-image-stage {
+    height: auto !important;
+    min-height: 0;
+    padding: 22px 0;
+  }
+
+  .showcase-image-card {
+    position: relative;
+    inset: auto;
+    display: block;
+    width: min(100%, 310px);
+    height: 390px;
+    margin: 0 auto 18px;
+    transform: none !important;
+  }
+
+  .showcase-image-card:hover,
+  .showcase-image-card.is-active {
+    transform: translateY(-12px) scale(1.04) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
